@@ -1,0 +1,94 @@
+# =============================================
+# Unity .gitignore - Recommended for most projects
+# =============================================
+
+# Unity generated files
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# Unity cache & crash reports
+/[Cc]ache/
+/CrashDumps/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Unity specific
+*.pidb.meta
+*.pdb
+*.mdb
+*.opendb
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.code-workspace
+
+# Package manager
+Packages/manifest.json.lock
+Packages/packages-lock.json
+
+# Built assets & exports
+/[Ee]xports/
+/[ Aa]ssets/StreamingAssets/AA/
+*.apk
+*.aab
+*.unitypackage
+
+# Asset serialization conflicts
+*.asset.meta
+!Assets/**/  # Keep folder structure
+
+# Do NOT ignore these important files
+!/.gitignore
+!/.gitattributes
+!/Packages/manifest.json
+!/ProjectSettings/
+
+# Optional: Ignore large files you don't want in version control
+# (Uncomment if needed)
+/Assets/Art/*
+/Assets/Audio/*
+/Assets/Video/*
+/Assets/Plugins/Android/*.aar
+/Assets/Plugins/iOS/*
+
+# =============================================
+# Common additions you might want
+# =============================================
+
+# Ignore generated folders from Addressables, Shader Graph, etc.
+Library/ShaderCache/
+Library/ScriptAssemblies/
+Library/Bee/
+
+# Test results
+TestResults/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# macOS
+*.swp
+*.swo

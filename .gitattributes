@@ -1,0 +1,37 @@
+# Unity .gitattributes - Recommended
+
+# Normalize all text files to LF in the repository
+* text=auto eol=lf
+
+# Force specific Unity/YAML files to always use LF (prevents future churn)
+*.cs          text eol=lf
+*.unity       text eol=lf
+*.prefab      text eol=lf
+*.asset       text eol=lf
+*.anim        text eol=lf
+*.controller  text eol=lf
+*.meta        text eol=lf
+*.mat         text eol=lf
+*.shader      text eol=lf
+
+# Project settings and other YAML files
+ProjectSettings/* text eol=lf
+Packages/*        text eol=lf
+
+# Binary files - never touch line endings
+*.png         binary
+*.jpg         binary
+*.jpeg        binary
+*.fbx         binary
+*.ttf         binary
+*.pdf         binary
+*.wav         binary
+*.mp3         binary
+*.mp4         binary
+*.exe         binary
+*.dll         binary
+*.aar         binary
+
+# Visual Studio solution files (if you have them)
+*.sln         text eol=crlf
+*.csproj      text eol=crlf
