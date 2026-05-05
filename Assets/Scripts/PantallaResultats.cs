@@ -23,9 +23,9 @@ public class PantallaResultats : MonoBehaviour
 
     public void TornarAInici()
     {
-        ValorsGlobals.puntsAconseguits = "Punts: 0";
-        ValorsGlobals.videsJugador = 3;
-        ValorsGlobals.videsAgafades = 0;
+        
         SceneManager.LoadScene("EscenaInici");
     }
+
+
 }
