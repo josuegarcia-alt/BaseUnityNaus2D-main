@@ -1,21 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PantallaResultats : MonoBehaviour
 {
     [SerializeField]
     private TMPro.TextMeshProUGUI puntsAconseguits;
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private TMPro.TextMeshProUGUI videsAgafades;
+
     void Start()
     {
         puntsAconseguits.text = ValorsGlobals.puntsAconseguits;
+        videsAgafades.text = "Vides agafades: " + ValorsGlobals.videsAgafades;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void TornarAInici()
+    {
+        ValorsGlobals.puntsAconseguits = "Punts: 0";
+        ValorsGlobals.videsJugador = 3;
+        ValorsGlobals.videsAgafades = 0;
+        SceneManager.LoadScene("EscenaInici");
     }
 }

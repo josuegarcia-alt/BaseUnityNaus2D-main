@@ -4,59 +4,65 @@ using UnityEngine;
 
 public class GeneradorEnemics : MonoBehaviour
 {
-    /*
-     * Crear múltiples objectes d'un:
-     * 
-     * 1) Convertim l'objecte a copiar en Prefab.
-     * 2) Creem un objecte buit a l'escena.
-     * 3) Creem un script i l'assignem a l'objecte buit.
-     * 4) En l'objecte buit:
-     *      - Creem un atribut de tipus GameObject i públic.
-     *      - Des de Unity, arrosseguem el Prefab sobre el camp públic anterior (el 
-     *              de tipus GameObject, que apareixerà a l'editor de Unity).
-     *      - Creem un mètode i hi fem el Instantiate (en l'exemple, el mètode "CreaEneemic").
-     *      - En el Start(), cridem el InvokeRepeteating().
-     */
-
     public GameObject _NauEnemicPrefab;
+    public GameObject _NauEnemicEspecialPrefab;
+    public GameObject _ObjecVidaPrefab;
 
-    // Start is called before the first frame update
     void Start()
     {
         IniciGeneraEnemics();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void IniciGeneraEnemics()
     {
-        // Param1: Nom mètode a cridar.
-        // Param2: temps fins a cridar-se.
-        // Param3: temps entre repeticions
         InvokeRepeating("CreaEnemic", 2f, 1f);
+        InvokeRepeating("CreaEnemicEspecial", 5f, 8f);
+        InvokeRepeating("CreaObjecVida", 6f, 7f);
     }
 
     public void AturaGenerarEnemics()
     {
         CancelInvoke("CreaEnemic");
+        CancelInvoke("CreaEnemicEspecial");
+        CancelInvoke("CreaObjecVida");
     }
 
     private void CreaEnemic()
     {
         GameObject nauEnemic = Instantiate(_NauEnemicPrefab);
 
-        // Anem a situar en una posició aleatòria (però a dalt) l'enemic creat.
+        Vector2 minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
+        Vector2 maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
+
+        float posicioHoritzontalComponentX = Random.Range(minPantalla.x, maxPantalla.x);
+        nauEnemic.transform.position = new Vector2(posicioHoritzontalComponentX, maxPantalla.y);
+    }
+
+    private void CreaEnemicEspecial()
+    {
+        if (_NauEnemicEspecialPrefab == null) return;
+        GameObject nauEspecial = Instantiate(_NauEnemicEspecialPrefab);
 
         Vector2 minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
         Vector2 maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
 
-        // Trobem posició x aleatoria entre el marge esquerra i dret de la pantalla.
-        float posicioHoritzontalComponentX = Random.Range(minPantalla.x, maxPantalla.x);
+        float posX = Random.Range(minPantalla.x, maxPantalla.x);
+        nauEspecial.transform.position = new Vector2(posX, maxPantalla.y);
+    }
 
-        nauEnemic.transform.position = new Vector2(posicioHoritzontalComponentX, maxPantalla.y);
+    private void CreaObjecVida()
+    {
+        if (_ObjecVidaPrefab == null) return;
+        GameObject objecVida = Instantiate(_ObjecVidaPrefab);
+
+        Vector2 minPantalla = Camera.main.ViewportToWorldPoint(new Vector2(0f, 0f));
+        Vector2 maxPantalla = Camera.main.ViewportToWorldPoint(new Vector2(1f, 1f));
+
+        float posX = Random.Range(minPantalla.x, maxPantalla.x);
+        objecVida.transform.position = new Vector2(posX, maxPantalla.y);
     }
 }
